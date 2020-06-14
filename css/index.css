@@ -28,7 +28,7 @@
     text-transform: uppercase;
     font-size: 42px;
     line-height: 70px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
 }
 
 .banner_content h1 span {

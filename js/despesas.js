@@ -29,7 +29,7 @@ class UI {
     }
 
     static adicionaRecitaNaTabela(receita) {
-        const list = document.querySelector('#book-list');
+        const list = document.querySelector('#tabela');
 
         const row = document.createElement('tr');
         row.classList.add('table-success');
@@ -45,7 +45,7 @@ class UI {
     }
 
     static adicionaDespesaNaTabela(despesa) {
-        const list = document.querySelector('#book-list');
+        const list = document.querySelector('#tabela');
 
         const row = document.createElement('tr');
         row.classList.add('table-danger');

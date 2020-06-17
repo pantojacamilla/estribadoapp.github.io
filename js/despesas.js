@@ -205,7 +205,7 @@ document.querySelector('#financas').addEventListener('submit', (e) => {
 });
 
 // Event: Remove receita
-document.querySelector('#book-list').addEventListener('click', (e) => {
+document.querySelector('#tabela').addEventListener('click', (e) => {
     // Remove receita da UI
     UI.deletaReceita(e.target);
 
@@ -217,7 +217,7 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
 });
 
 // Event: Remove despesa
-document.querySelector('#book-list').addEventListener('click', (e) => {
+document.querySelector('#tabela').addEventListener('click', (e) => {
     // Remove despesa da UI
     UI.deletaDespesa(e.target);
 

@@ -1,12 +1,3 @@
-// Classe Receita
-class Receita {
-    constructor(descricao, valorTotal, data) {
-        this.descricao = descricao;
-        this.valorTotal = valorTotal;
-        this.data = data;
-    }
-}
-
 // Classe Despesa
 class Despesa {
     constructor(descricao, valorTotal, data) {
@@ -18,30 +9,9 @@ class Despesa {
 
 // Classe UI
 class UI {
-    static displayReceitas() {
-        const receitas = Store.getReceitas();
-        receitas.forEach((receita) => UI.adicionaRecitaNaTabela(receita));
-    }
-
     static displayDespesas() {
         const despesas = Store.getDespesas();
         despesas.forEach((despesa) => UI.adicionaDespesaNaTabela(despesa));
-    }
-
-    static adicionaRecitaNaTabela(receita) {
-        const list = document.querySelector('#tabela');
-
-        const row = document.createElement('tr');
-        row.classList.add('table-success');
-
-        row.innerHTML = `
-        <td>${receita.descricao}</td>
-        <td>${receita.valorTotal}R$</td>
-        <td>${receita.data}</td>
-        <td><a href="#" class="btn btn-danger btn-sm deletaReceita">X</a></td>
-      `;
-
-        list.appendChild(row);
     }
 
     static adicionaDespesaNaTabela(despesa) {
@@ -60,12 +30,6 @@ class UI {
         list.appendChild(row);
     }
 
-    static deletaReceita(el) {
-        if (el.classList.contains('deletaReceita')) {
-            el.parentElement.parentElement.remove();
-        }
-    }
-
     static deletaDespesa(el) {
         if (el.classList.contains('deletaDespesa')) {
             el.parentElement.parentElement.remove();
@@ -81,7 +45,7 @@ class UI {
         const campoDescricao = document.querySelector('.form-group');
         formulario.insertBefore(div, campoDescricao);
 
-        setTimeout(() => document.querySelector('.alert').remove(), 2000);
+        setTimeout(() => document.querySelector('.alert').remove(), 4000);
     }
 
     static limpaCampos() {
@@ -93,18 +57,6 @@ class UI {
 
 // Classe Store
 class Store {
-
-    static getReceitas() {
-        let receitas;
-        if (localStorage.getItem('receitas') === null) {
-            receitas = [];
-        } else {
-            receitas = JSON.parse(localStorage.getItem('receitas'));
-        }
-
-        return receitas;
-    }
-
     static getDespesas() {
         let despesas;
         if (localStorage.getItem('despesas') === null) {
@@ -116,28 +68,10 @@ class Store {
         return despesas;
     }
 
-    static adicionaReceita(receita) {
-        const receitas = Store.getReceitas();
-        receitas.push(receita);
-        localStorage.setItem('receitas', JSON.stringify(receitas));
-    }
-
     static adicionaDespesa(despesa) {
         const despesas = Store.getDespesas();
         despesas.push(despesa);
         localStorage.setItem('despesas', JSON.stringify(despesas));
-    }
-
-    static removeReceita(descricao) {
-        const receitas = Store.getReceitas();
-
-        receitas.forEach((receita, index) => {
-            if (receita.descricao === descricao) {
-                receitas.splice(index, 1);
-            }
-        });
-
-        localStorage.setItem('receitas', JSON.stringify(receitas));
     }
 
     static removeDespesa(descricao) {
@@ -153,13 +87,10 @@ class Store {
     }
 }
 
-// Event: Display receitas
-document.addEventListener('DOMContentLoaded', UI.displayReceitas);
-
 // Event: Display despesas
 document.addEventListener('DOMContentLoaded', UI.displayDespesas);
 
-// Event: Adiciona receita/despesa
+// Event: Adiciona despesa
 document.querySelector('#financas').addEventListener('submit', (e) => {
 
     // Previne a submissão do form
@@ -168,62 +99,34 @@ document.querySelector('#financas').addEventListener('submit', (e) => {
     const descricao = document.querySelector('#descricao').value;
     const valorTotal = document.querySelector('#valorTotal').value;
     const data = document.querySelector('#data').value;
-    const tipo = document.querySelector('#tipo').value;
 
     // TODO: VALIDAÇÃO
     if (descricao === '' || valorTotal === '' || data === '') {
         UI.mostraAlerta('Todos os campos devem ser preenchidos !', 'danger');
     } else {
 
-        if (tipo === 'Receita') {
-            // Istancia receita
-            const receita = new Receita(descricao, valorTotal, data);
+        // Istancia despesa
+        const despesa = new Despesa(descricao, valorTotal, data);
 
-            // Guarda a receita no local storage
-            Store.adicionaReceita(receita);
+        // Guarda a Despesa no local storage
+        Store.adicionaDespesa(despesa);
 
-            // Mostra a receita na tela
-            UI.adicionaRecitaNaTabela(receita);
+        // Mostra a Despesa na tela
+        UI.adicionaDespesaNaTabela(despesa);
 
-            // Mostra mensagem de sucesso
-            UI.mostraAlerta('Receita Adicionada com Sucesso', 'success');
+        // Mostra mensagem de sucesso
+        UI.mostraAlerta('Despesa Adicionada com Sucesso', 'success');
 
-            // Limpa os campos do form
-            UI.limpaCampos();
-        } else {
-            // Istancia despesa
-            const despesa = new Despesa(descricao, valorTotal, data);
-
-            // Guarda a Despesa no local storage
-            Store.adicionaDespesa(despesa);
-
-            // Mostra a Despesa na tela
-            UI.adicionaDespesaNaTabela(despesa);
-
-            // Mostra mensagem de sucesso
-            UI.mostraAlerta('Despesa Adicionada com Sucesso', 'success');
-
-            // Limpa os campos do form
-            UI.limpaCampos();
-        }
+        // Limpa os campos do form
+        UI.limpaCampos();
     }
 });
 
-// Event: Remove receita e despesa
+// Event: Remove despesa
 
 document.querySelector('#tabela').addEventListener('click', (e) => {
 
-    if (e.target.classList.contains('deletaReceita')) {
-        // Remove receita da UI
-        UI.deletaReceita(e.target);
-
-        // Remove receita do local storage
-        Store.removeReceita(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
-
-        // Mostra Alerta
-        UI.mostraAlerta('Receita Removida com Sucesso', 'success');
-
-    } else if (e.target.classList.contains('deletaDespesa')) {
+    if (e.target.classList.contains('deletaDespesa')) {
         // Remove despesa da UI
         UI.deletaDespesa(e.target);
 

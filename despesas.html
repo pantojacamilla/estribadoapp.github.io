@@ -25,7 +25,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formularioModalLabel">Adicione uma Receita/Despesa</h5>
+                    <h5 class="modal-title" id="formularioModalLabel">Adicione uma Despesa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -34,7 +34,7 @@
                 <div class="modal-body">
 
                     <!-- Formulário -->
-                    <form id="financas">
+                    <form id="despesas">
                         <div class="form-group">
                             <label for="descricao">Descrição</label>
                             <input type="text" id="descricao" class="form-control">
@@ -64,7 +64,7 @@
 
         <!-- Trigger do modal -->
         <button type="button" class="btn btn-primary btn-block mt-3" data-toggle="modal" data-target="#formularioModal">
-            Adicionar Receita/Despesa
+            Adicionar Despesa
         </button>
 
         <table class="table table-sm table-hover table-bordered mt-3">
@@ -75,7 +75,7 @@
                     <th>Data</th>
                 </tr>
             </thead>
-            <tbody id="tabela"></tbody>
+            <tbody id="tabelaDespesas"></tbody>
         </table>
 
     </div>

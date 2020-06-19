@@ -170,37 +170,41 @@ document.querySelector('#financas').addEventListener('submit', (e) => {
     const tipo = document.querySelector('#tipo').value;
 
     // TODO: VALIDAÇÃO
-
-    if (tipo === 'Receita') {
-        // Istancia receita
-        const receita = new Receita(descricao, valorTotal, data);
-
-        // Guarda a receita no local storage
-        Store.adicionaReceita(receita);
-
-        // Mostra a receita na tela
-        UI.adicionaRecitaNaTabela(receita);
-
-        // Mostra mensagem de sucesso
-        UI.mostraAlerta('Receita Adicionada com Sucesso', 'success');
-
-        // Limpa os campos do form
-        UI.limpaCampos();
+    if (descricao === '' || valorTotal === '' || data === '') {
+        UI.mostraAlerta('Todos os campos devem ser preenchidos !', 'danger');
     } else {
-        // Istancia despesa
-        const despesa = new Despesa(descricao, valorTotal, data);
 
-        // Guarda a Despesa no local storage
-        Store.adicionaDespesa(despesa);
+        if (tipo === 'Receita') {
+            // Istancia receita
+            const receita = new Receita(descricao, valorTotal, data);
 
-        // Mostra a Despesa na tela
-        UI.adicionaDespesaNaTabela(despesa);
+            // Guarda a receita no local storage
+            Store.adicionaReceita(receita);
 
-        // Mostra mensagem de sucesso
-        UI.mostraAlerta('Despesa Adicionada com Sucesso', 'success');
+            // Mostra a receita na tela
+            UI.adicionaRecitaNaTabela(receita);
 
-        // Limpa os campos do form
-        UI.limpaCampos();
+            // Mostra mensagem de sucesso
+            UI.mostraAlerta('Receita Adicionada com Sucesso', 'success');
+
+            // Limpa os campos do form
+            UI.limpaCampos();
+        } else {
+            // Istancia despesa
+            const despesa = new Despesa(descricao, valorTotal, data);
+
+            // Guarda a Despesa no local storage
+            Store.adicionaDespesa(despesa);
+
+            // Mostra a Despesa na tela
+            UI.adicionaDespesaNaTabela(despesa);
+
+            // Mostra mensagem de sucesso
+            UI.mostraAlerta('Despesa Adicionada com Sucesso', 'success');
+
+            // Limpa os campos do form
+            UI.limpaCampos();
+        }
     }
 });
 

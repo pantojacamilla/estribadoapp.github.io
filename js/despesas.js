@@ -72,15 +72,16 @@ class UI {
         }
     }
 
-    static mostraAlerta(message, className) {
+    static mostraAlerta(mensagem, className) {
         const div = document.createElement('div');
         div.className = `alert alert-${className}`;
-        div.appendChild(document.createTextNode(message));
-        const container = document.querySelector('.container');
-        const tabela = document.querySelector('table');
-        container.insertBefore(div, tabela);
+        div.appendChild(document.createTextNode(mensagem));
 
-        setTimeout(() => document.querySelector('.alert').remove(), 8000);
+        const formulario = document.querySelector('#financas');
+        const campoDescricao = document.querySelector('.form-group');
+        formulario.insertBefore(div, campoDescricao);
+
+        setTimeout(() => document.querySelector('.alert').remove(), 2000);
     }
 
     static limpaCampos() {

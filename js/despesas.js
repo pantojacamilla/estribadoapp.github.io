@@ -80,14 +80,13 @@ class UI {
         const tabela = document.querySelector('table');
         container.insertBefore(div, tabela);
 
-        setTimeout(() => document.querySelector('.alert').remove(), 3000);
+        setTimeout(() => document.querySelector('.alert').remove(), 8000);
     }
 
     static limpaCampos() {
         document.querySelector('#descricao').value = '';
         document.querySelector('#valorTotal').value = '';
         document.querySelector('#data').value = '';
-        alert('oi');
     }
 }
 
@@ -200,14 +199,11 @@ document.querySelector('#financas').addEventListener('submit', (e) => {
             // Mostra a Despesa na tela
             UI.adicionaDespesaNaTabela(despesa);
 
-            // Limpa os campos do form
-            UI.limpaCampos();
-            alert('embaixo');
-
             // Mostra mensagem de sucesso
             UI.mostraAlerta('Despesa Adicionada com Sucesso', 'success');
 
-
+            // Limpa os campos do form
+            UI.limpaCampos();
         }
     }
 });

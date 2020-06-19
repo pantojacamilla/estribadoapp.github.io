@@ -204,26 +204,39 @@ document.querySelector('#financas').addEventListener('submit', (e) => {
     }
 });
 
-// Event: Remove receita
+// Event: Remove receita e despesa
+
 document.querySelector('#tabela').addEventListener('click', (e) => {
     // Remove receita da UI
     UI.deletaReceita(e.target);
 
     // Remove receita do local storage
-    Store.removeReceita(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+    Store.removeReceita(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
 
     // Mostra Alerta
     UI.mostraAlerta('Receita Removida com Sucesso', 'success');
 });
 
-// Event: Remove despesa
 document.querySelector('#tabela').addEventListener('click', (e) => {
-    // Remove despesa da UI
-    UI.deletaDespesa(e.target);
 
-    // Remove despesa do local storage
-    Store.removeDespesa(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
 
-    // Mostra Alerta
-    UI.mostraAlerta('Despesa Removida com Sucesso', 'success');
+    if (e.target.classList.contains('deletaReceita')) {
+        // Remove receita da UI
+        UI.deletaReceita(e.target);
+
+        // Remove receita do local storage
+        Store.removeReceita(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+
+        // Mostra Alerta
+        UI.mostraAlerta('Receita Removida com Sucesso', 'success');
+    } else {
+        // Remove despesa da UI
+        UI.deletaDespesa(e.target);
+
+        // Remove despesa do local storage
+        Store.removeDespesa(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+
+        // Mostra Alerta
+        UI.mostraAlerta('Despesa Removida com Sucesso', 'success');
+    }
 });

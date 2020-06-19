@@ -36,44 +36,75 @@
                     <!-- Formulário -->
                     <form id="receita">
 
+                        <label for="acai">Açaí</label>
+                        <br>
+
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">1</label>
+                            <input class="form-check-input" type="checkbox" id="acaiFino" value="fino">
+                            <label class="form-check-label" for="acaiFino">Fino</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">2</label>
+                            <input class="form-check-input" type="checkbox" id="acaiMedio" value="medio">
+                            <label class="form-check-label" for="acaiMedio">Médio</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"
-                                disabled>
-                            <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+                            <input class="form-check-input" type="checkbox" id="acaiGrosso" value="grosso">
+                            <label class="form-check-label" for="acaiGrosso">Grosso</label>
                         </div>
 
-                        <div class="form-group">
-                            <label for="descricao">Descrição</label>
-                            <input type="text" id="descricao" class="form-control">
+                        <br>
+                        <div class="form-row mt-2">
+
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Litros">
+                            </div>
+
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Litros">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Litros">
+                            </div>
+
                         </div>
-                        <div class="form-group">
-                            <label for="valorTotal">Valor Total</label>
-                            <input type="number" id="valorTotal" class="form-control">
+
+                        <label class="mt-2" for="farinha">Farinha</label>
+                        <br>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="farinhaDAgua" value="dAgua">
+                            <label class="form-check-label" for="farinhaDAgua">Farinha D'água</label>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="data">Data</label>
-                                <input type="date" id="data" class="form-control">
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="farinhaDeTapioca" value="tapioca">
+                            <label class="form-check-label" for="farinhaDeTapioca">Farinha de Tapioca</label>
+                        </div>
+
+
+                        <br>
+                        <div class="form-row mt-2 mb-2">
+
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Quantidade">
+                            </div>
+
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Quantidade">
                             </div>
                         </div>
 
                         <input type="submit" value="Adicionar Despesa" class="btn btn-success btn-block">
+
                     </form>
 
                 </div>
 
             </div>
         </div>
+    </div>
     </div>
 
     <div class="container mt-5">

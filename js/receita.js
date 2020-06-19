@@ -15,7 +15,7 @@ class UI {
     }
 
     static adicionaDespesaNaTabela(despesa) {
-        const list = document.querySelector('#tabela');
+        const list = document.querySelector('#tabelaReceita');
 
         const row = document.createElement('tr');
         row.classList.add('table-danger');
@@ -41,7 +41,7 @@ class UI {
         div.className = `alert alert-${className}`;
         div.appendChild(document.createTextNode(mensagem));
 
-        const formulario = document.querySelector('#financas');
+        const formulario = document.querySelector('#receita');
         const campoDescricao = document.querySelector('.form-group');
         formulario.insertBefore(div, campoDescricao);
 
@@ -91,7 +91,7 @@ class Store {
 document.addEventListener('DOMContentLoaded', UI.displayDespesas);
 
 // Event: Adiciona despesa
-document.querySelector('#financas').addEventListener('submit', (e) => {
+document.querySelector('#receita').addEventListener('submit', (e) => {
 
     // Previne a submissão do form
     e.preventDefault();
@@ -124,7 +124,7 @@ document.querySelector('#financas').addEventListener('submit', (e) => {
 
 // Event: Remove despesa
 
-document.querySelector('#tabela').addEventListener('click', (e) => {
+document.querySelector('#tabelaReceita').addEventListener('click', (e) => {
 
     if (e.target.classList.contains('deletaDespesa')) {
         // Remove despesa da UI

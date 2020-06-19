@@ -211,18 +211,6 @@ document.querySelector('#financas').addEventListener('submit', (e) => {
 // Event: Remove receita e despesa
 
 document.querySelector('#tabela').addEventListener('click', (e) => {
-    // Remove receita da UI
-    UI.deletaReceita(e.target);
-
-    // Remove receita do local storage
-    Store.removeReceita(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
-
-    // Mostra Alerta
-    UI.mostraAlerta('Receita Removida com Sucesso', 'success');
-});
-
-document.querySelector('#tabela').addEventListener('click', (e) => {
-
 
     if (e.target.classList.contains('deletaReceita')) {
         // Remove receita da UI
@@ -233,7 +221,8 @@ document.querySelector('#tabela').addEventListener('click', (e) => {
 
         // Mostra Alerta
         UI.mostraAlerta('Receita Removida com Sucesso', 'success');
-    } else {
+
+    } else if (e.target.classList.contains('deletaDespesa')) {
         // Remove despesa da UI
         UI.deletaDespesa(e.target);
 

@@ -9,6 +9,50 @@ class Despesa {
 
 // Classe UI
 class UI {
+
+    // Função que mostra/esconde os elementos
+    static mostraEscondeCheckBox(referenciaCheckbox) {
+
+        if (referenciaCheckbox === 'fino') {
+
+            const checkbox = document.querySelector('#acaiFino');
+            const campo = document.querySelector('#qtdAcaiFino');
+
+            if (checkbox.checked === true) {
+                campo.classList.remove('invisivel');
+            } else {
+                campo.setAttribute('class', 'form-control invisivel');
+                campo.value = '';
+            }
+
+
+        } else if (referenciaCheckbox === 'medio') {
+            const checkbox = document.querySelector('#acaiMedio');
+            const campo = document.querySelector('#qtdAcaiMedio');
+
+            if (checkbox.checked === true) {
+                campo.classList.remove('invisivel');
+            } else {
+                campo.setAttribute('class', 'form-control invisivel');
+                campo.value = '';
+            }
+        } else if (referenciaCheckbox === 'grosso') {
+            const checkbox = document.querySelector('#acaiGrosso');
+            const campo = document.querySelector('#qtdAcaiGrosso');
+
+            if (checkbox.checked === true) {
+                campo.classList.remove('invisivel');
+            } else {
+                campo.setAttribute('class', 'form-control invisivel');
+                campo.value = '';
+            }
+        }
+
+
+
+
+    }
+
     static displayDespesas() {
         const despesas = Store.getDespesas();
         despesas.forEach((despesa) => UI.adicionaDespesaNaTabela(despesa));
@@ -123,7 +167,6 @@ document.querySelector('#receita').addEventListener('submit', (e) => {
 });
 
 // Event: Remove despesa
-
 document.querySelector('#tabelaReceita').addEventListener('click', (e) => {
 
     if (e.target.classList.contains('deletaDespesa')) {
@@ -136,4 +179,10 @@ document.querySelector('#tabelaReceita').addEventListener('click', (e) => {
         // Mostra Alerta
         UI.mostraAlerta('Despesa Removida com Sucesso', 'success');
     }
+});
+
+// Event: Mostrar campo de quantidade
+document.querySelector('#receita').addEventListener('click', (e) => {
+    //console.log(e.target.value);
+    UI.mostraEscondeCheckBox(e.target.value);
 });

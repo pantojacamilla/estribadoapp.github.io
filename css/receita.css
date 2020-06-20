@@ -5,3 +5,7 @@
 .table tr td {
     vertical-align: middle;
 }
+
+.invisivel {
+    display: none;
+}
